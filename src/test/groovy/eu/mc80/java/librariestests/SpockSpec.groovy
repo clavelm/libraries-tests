@@ -27,4 +27,29 @@ class SpockSpec extends Specification {
         then:
         thrown(IndexOutOfBoundsException)
     }
+
+    def "no exception"() {
+        given:
+        def map = new HashMap()
+
+        when:
+        map.put(null, "elem")
+
+        then:
+        notThrown(NullPointerException)
+    }
+
+    def "expect"() {
+        expect:
+        Math.max(1, 2) == 2
+    }
+
+    def "cleanup block"() {
+        given:
+        def file = new File("temp.txt")
+        file.createNewFile()
+
+        cleanup:
+        file?.delete()
+    }
 }
