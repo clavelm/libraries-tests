@@ -67,4 +67,17 @@ class SpockSpec extends Specification {
         assert s.endsWith("test")
         assert s.split(" ").size() == 4
     }
+
+    def "with"() {
+        when:
+        def string = "A string to test"
+
+        then:
+        with(string) {
+            !isBlank()
+            startsWith("A")
+            endsWith("test")
+            split(" ") == ["A", "string", "to", "test"]
+        }
+    }
 }
