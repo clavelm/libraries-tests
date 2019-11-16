@@ -80,4 +80,12 @@ class SpockSpec extends Specification {
             split(" ") == ["A", "string", "to", "test"]
         }
     }
+
+    def "verifyAll"() {
+        expect:
+        verifyAll {
+            2 == 2
+            4 == 4
+        }
+    }
 }
