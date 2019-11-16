@@ -52,4 +52,19 @@ class SpockSpec extends Specification {
         cleanup:
         file?.delete()
     }
+
+    def "helper method"() {
+        when:
+        def string = "A string to test"
+
+        then:
+        matchesSpec(string)
+    }
+
+    void matchesSpec(String s) {
+        assert !s.isBlank()
+        assert s.startsWith("A")
+        assert s.endsWith("test")
+        assert s.split(" ").size() == 4
+    }
 }
